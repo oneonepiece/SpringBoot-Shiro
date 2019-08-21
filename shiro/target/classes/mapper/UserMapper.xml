@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.shiro.core.dao.UserMapper">
+
+
+
+    <resultMap id="UserBaseMap" type="com.lin.shiro.core.entity.shiro.User">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="VARCHAR" property="user_id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="salt" jdbcType="VARCHAR" property="salt"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+
+        <result column="sex" jdbcType="BIGINT" property="sex"/>
+        <result column="age" jdbcType="BIGINT" property="age"/>
+        <result column="status" jdbcType="BIGINT" property="status"/>
+
+        <result column="create_time" jdbcType="DATE" property="create_time"/>
+        <result column="update_time" jdbcType="DATE" property="update_time"/>
+        <result column="last_login_time" jdbcType="DATE" property="last_login_time"/>
+
+    </resultMap>
+
+
+    <!--SELECT * FROM tb_user WHERE username = 'Lin'-->
+    <select id="findByUsername" parameterType="java.lang.String" resultMap="UserBaseMap">
+        select * from tb_user where username = #{username}
+
+    </select>
+
+    <!--createUser   -->
+
+    <!--<select id="selectStudentBYstuid" parameterType="java.lang.Integer" resultMap="StudentBaseMap">-->
+
+        <!--&lt;!&ndash;select * from demoj_student&ndash;&gt;-->
+        <!--&lt;!&ndash;<if test="stuid != 0">&ndash;&gt;-->
+        <!--&lt;!&ndash;where stuid =#{stuid}&ndash;&gt;-->
+        <!--&lt;!&ndash;</if>&ndash;&gt;-->
+        <!--select * from demoj_student where stuid = #{stuid}-->
+    <!--</select>-->
+
+    <!--<select id="selectFreeTimeBYstuid" parameterType="java.lang.Integer" resultMap="FreeTimeBaseMap">-->
+        <!--select * from demoj_freetime where stuid = #{stuid}-->
+    <!--</select>-->
+
+
+
+
+</mapper>

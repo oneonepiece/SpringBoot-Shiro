@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+</head>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" />
+<body>
+
+<input id="username" type="text" placeholder="请输入用户名">
+<input id="password" type="password" placeholder="请输入密码">
+<input id="passwordTwo" type="password" placeholder="请再次输入密码">
+<br/><br/>
+<input id="setInput" type="button" value="注册">
+
+<script>
+
+    //获取页面中的元素
+    var username=document.getElementById("username");
+    var password=document.getElementById("password");
+    var passwordTwo=document.getElementById("passwordTwo");
+    var setInput=document.getElementById("setInput");
+    //给注册按钮增加个点击事件，判断用户名和密码是否为空，密码和重复密码是否一致，注册成功跳转
+    setInput.addEventListener("click",function () {
+        if (username.value==""||password.value==""||passwordTwo.value==""){
+            alert("用户名以及密码不能为空");
+        }else if (password.value!=passwordTwo.value) {
+            alert("密码和重复密码不一致");
+        }else {
+            if (!tuust(username.value)){
+                localStorage.username+=username.value+":"+password.value+";";
+                location.href="enter.html";
+                alert("恭喜，注册成功");
+            } else {
+                alert("你输入的用户名已经被注册");
+                username.value="";
+            }
+        }
+    });
+    //创建一个方法，判断注册的用户名是否被注册
+    function tuust(value) {
+        var dta=localStorage.username.split(";");
+        for (let i=0;i<dta.length;i++){
+            var arrPust=dta[i].split(":");
+            if (arrPust[0]==value){
+                return true;
+            }
+        }
+        return false;
+    }
+</script>
+
+</body>
+</html>
