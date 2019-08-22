@@ -8,6 +8,7 @@ import com.lin.shiro.core.entity.shiro.Role;
 import com.lin.shiro.core.entity.shiro.User;
 import com.lin.shiro.core.service.UserService;
 import com.lin.shiro.core.util.shiro.PasswordHelper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,10 +48,17 @@ public class UserServiceImpl implements UserService {
         if (user == null){
             return null;
         }
+        Set<String> role_name = new HashSet<String>();
         //找到该用户的角色id 集合
         List<String> roles_ids = roleMapper.findRolesByUserIds(user.getUser_id());
+        //找不到该角色,表示这个用户还没有分配角色
+        if (roles_ids.size() == 0 ){
+          //  role_name.add("notRole");
+            return null;
+        }
         List<Role> roles =  roleMapper.findRoleByRids(roles_ids);
-        Set<String> role_name = new HashSet<String>();
+
+
         for (int i=0 ; i<roles.size(); i++){
             role_name.add(roles.get(i).getName());
         }

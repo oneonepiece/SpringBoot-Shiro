@@ -21,7 +21,7 @@ import java.util.List;
 @Component
 public interface RoleMapper {
 
-    List<String> findRolesByUserIds(String user_id); // 根据用户id查找其角色id
+    List<String> findRolesByUserIds(@Param("user_id") String user_id); // 根据用户id查找其角色id
 
     //SELECT * FROM tb_blog WHERE blog_id = 1||80||100;
     List<Role> findRoleByRids(@Param("role_ids") List<String> role_ids); // 根据角色id 集合得到角色

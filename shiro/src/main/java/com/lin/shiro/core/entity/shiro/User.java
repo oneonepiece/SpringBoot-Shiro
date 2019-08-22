@@ -60,6 +60,9 @@ public class User {
     public String getSalt() {
         return salt;
     }
+    public String getSaltAndUsername(){
+        return username + salt;
+    }
 
     public void setSalt(String salt) {
         this.salt = salt;

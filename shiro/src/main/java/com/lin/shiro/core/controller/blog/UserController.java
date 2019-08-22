@@ -10,6 +10,7 @@ import org.apache.shiro.web.util.SavedRequest;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.servlet.ModelAndView;
@@ -34,14 +35,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/login")
+    @PostMapping("/login")
     public String login(User loginUser, ServletRequest request){
-
 
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(loginUser.getUsername(),loginUser.getPassword());
         if(!subject.isAuthenticated()){
-
+            //没有认证就登录
             subject.login(token);
         }
         //获取上一次请求路径
@@ -51,7 +51,7 @@ public class UserController {
             url = savedRequest.getRequestUrl();
         }else{
 //            url = "/page/main.html";
-            url = "/page/index.html";
+            url = "/index.html";
         }
         return url;
     }
@@ -64,10 +64,10 @@ public class UserController {
 //        return view;
 //    }
 
-    @RequestMapping("/logout")
-    public String logout(User loginUser){
-        Subject subject = SecurityUtils.getSubject();
-        subject.logout();
-        return "已注销";
-    }
+//    @RequestMapping("/logout")
+//    public String logout(User loginUser){
+//        Subject subject = SecurityUtils.getSubject();
+//        subject.logout();
+//        return "已注销";
+//    }
 }

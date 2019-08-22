@@ -22,12 +22,12 @@
     </resultMap>
 
     <!--SELECT role_id FROM tb_user_role WHERE user_id = 1-->
-    <select id="findPermissions" parameterType="java.lang.String" resultMap="java.util.Set" >
+    <select id="findPermissions" parameterType="java.lang.String" resultType="java.lang.String" >
       SELECT permission_id FROM tb_role_permission WHERE role_id = #{role_id}
     </select>
 
     <!--SELECT name FROM tb_permission WHERE permission_id IN (1,2,3)-->
-    <select id="findPeNamesByPeIds" parameterType="java.util.Set" resultMap="java.util.Set" >
+    <select id="findPeNamesByPeIds" parameterType="java.util.Set" resultType="java.lang.String" >
         SELECT name FROM tb_permission
         <where>
             permission_id  IN

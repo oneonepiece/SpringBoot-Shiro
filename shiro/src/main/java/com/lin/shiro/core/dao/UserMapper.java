@@ -3,6 +3,7 @@ package com.lin.shiro.core.dao;
 
 import com.lin.shiro.core.entity.shiro.User;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,7 +27,7 @@ public interface UserMapper {
 //    List<FreeTime> selectFreeTimeBYstuid(int stuid);
 
 
-    User findByUsername(String username);// 根据用户名查找用户
+    User findByUsername(@Param("username")String username);// 根据用户名查找用户
 
 //    int createUser(User user);
 

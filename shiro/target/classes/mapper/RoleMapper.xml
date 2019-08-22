@@ -14,8 +14,8 @@
     </resultMap>
 
     <!--SELECT role_id FROM tb_user_role WHERE user_id = 1-->
-    <select id="findRolesByUserIds" parameterType="java.lang.String" resultMap="java.lang.String" >
-    SELECT role_id FROM tb_user_role WHERE user_id = #{user_id}
+    <select id="findRolesByUserIds" parameterType="java.lang.String" resultType="java.lang.String" >
+        SELECT role_id FROM tb_user_role WHERE user_id = #{user_id}
     </select>
 
 
@@ -36,15 +36,6 @@
             </foreach>
         </where>
     </select>
-
-
-    <!--<select id="findRoleByRids" parameterType="java.util.List" resultType="RoleBaseMap">-->
-        <!--SELECT * FROM tb_role WHERE role_id =-->
-        <!--<foreach collection="array" index="index" item="item"-->
-                 <!--open="(" separator="," close=")">-->
-            <!--#{item}-->
-        <!--</foreach>-->
-    <!--</select>-->
 
 
 </mapper>

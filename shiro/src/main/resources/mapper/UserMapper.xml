@@ -3,7 +3,6 @@
 <mapper namespace="com.lin.shiro.core.dao.UserMapper">
 
 
-
     <resultMap id="UserBaseMap" type="com.lin.shiro.core.entity.shiro.User">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="user_id" jdbcType="VARCHAR" property="user_id"/>
@@ -31,21 +30,5 @@
     </select>
 
     <!--createUser   -->
-
-    <!--<select id="selectStudentBYstuid" parameterType="java.lang.Integer" resultMap="StudentBaseMap">-->
-
-        <!--&lt;!&ndash;select * from demoj_student&ndash;&gt;-->
-        <!--&lt;!&ndash;<if test="stuid != 0">&ndash;&gt;-->
-        <!--&lt;!&ndash;where stuid =#{stuid}&ndash;&gt;-->
-        <!--&lt;!&ndash;</if>&ndash;&gt;-->
-        <!--select * from demoj_student where stuid = #{stuid}-->
-    <!--</select>-->
-
-    <!--<select id="selectFreeTimeBYstuid" parameterType="java.lang.Integer" resultMap="FreeTimeBaseMap">-->
-        <!--select * from demoj_freetime where stuid = #{stuid}-->
-    <!--</select>-->
-
-
-
 
 </mapper>
